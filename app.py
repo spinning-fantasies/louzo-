@@ -1,31 +1,28 @@
+from flask import Flask, render_template
 import sqlite3
 
-# Connect to the SQLite database
-conn = sqlite3.connect('loxapac.db')
-cursor = conn.cursor()
+app = Flask(__name__)
 
-# Create a table to store hours
-cursor.execute('''
-    CREATE TABLE IF NOT EXISTS intake (
-        date TEXT,
-        medication TEXT,
-        hours FLOAT
-    )
-''')
-conn.commit()
+# Define the float_to_hour function
+def float_to_hour(float_number):
+    hours = int(float_number)
+    minutes = int((float_number - hours) * 60)
+    return f"{hours:02d}:{minutes:02d}"
 
-while True:
-    date = input("Enter date (YYYY-MM-DD) : ")
-    medication = "Loxapac"
-    hours = float(input("Enter intake time : "))
+@app.route('/')
+def calendar():
+    conn = sqlite3.connect('loxapac.db')
+    cursor = conn.cursor()
 
-    # Insert the data into the database
-    cursor.execute("INSERT INTO intake VALUES (?, ?, ?)", (date, medication, hours))
-    conn.commit()
+    cursor.execute("SELECT date, medication, hours FROM intake")
+    hours_data = cursor.fetchall()
 
-    another_entry = input("Do you want to enter another hour? (yes/no): ")
-    if another_entry.lower() != 'yes':
-        break
+    # Convert the float hours to hour format for display
+    formatted_hours_data = [(date, medication, float_to_hour(hours)) for date, medication, hours in hours_data]
 
-# Close the database connection
-conn.close()
+    conn.close()
+
+    return render_template('calendar.html', hours_data=formatted_hours_data)
+
+if __name__ == '__main__':
+    app.run(debug=True)

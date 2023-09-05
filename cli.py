@@ -8,7 +8,7 @@ def float_to_hour(float_number):
 
 
 # Connect to the SQLite database
-conn = sqlite3.connect('loxapac.db')
+conn = sqlite3.connect('data/loxapac.db')
 cursor = conn.cursor()
 
 # Create a table to store hours

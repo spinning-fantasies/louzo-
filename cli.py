@@ -27,10 +27,10 @@ while True:
     hours = float(input("Enter intake time : "))
 
     # Convert the float hours to hour format
-    hours_format = float_to_hour(hours)
+    # hours_format = float_to_hour(hours)
 
     # Insert the data into the database
-    cursor.execute("INSERT INTO intake VALUES (?, ?, ?)", (date, medication, hours_format))
+    cursor.execute("INSERT INTO intake VALUES (?, ?, ?)", (date, medication, hours))
     conn.commit()
 
 

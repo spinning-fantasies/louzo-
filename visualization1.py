@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Assuming you have a CSV file with date and medication intake data
-data = pd.read_csv('intake.csv')
+data = pd.read_csv('data/intake.csv')
 
 # Convert date column to datetime
 data['date'] = pd.to_datetime(data['date'])

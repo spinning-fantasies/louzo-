@@ -9,6 +9,10 @@
             font-family: Arial, sans-serif;
         }
 
+        h1 {
+            text-align: center;
+        }
+
         table {
             border-collapse: collapse;
             width: 80%;
@@ -29,11 +33,43 @@
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+
+        /* Center the image horizontally and vertically */
+        .centered-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 38vh; /* Make the container full viewport height for vertical centering */
+        }
+
+        /* Adjust image size if needed */
+        .centered-image img {
+            max-width: 50%;
+            max-height: 50%;
+        }
+
+        /* Style the container div to display images side by side */
+        .image-container {
+            display: flex;
+        }
+
+        /* Style each image within the container */
+        .image-container img {
+            max-width: 50%; /* Adjust this value to control image width */
+            height: auto;
+        }
+
     </style>
 </head>
 
 <body>
-    <h1 style="text-align: center;">Medication Calendar</h1>
+    <h1>Medication Calendar</h1>
+    
+    <div class="image-container">
+        <img class="centered-image" src="{{ intake_image_url }}" alt="Medication Intake Over Time">
+        <img class="centered-image" src="{{ intake_image_url2 }}" alt="Medication Intake Over Time">
+    </div>
+
     <table>
         <thead>
             <tr>

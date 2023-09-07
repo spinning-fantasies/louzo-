@@ -21,13 +21,30 @@ cursor.execute('''
 ''')
 conn.commit()
 
+medications = ["Clozapine 25mg", "Clozapine 100mg", "Olanzapine 5mg", "Olanzapine 10mg" "Paroxétine 2mg", "Loxapac 150mg"]  # Add more medications as needed
+
+
 while True:
     date = input("Enter date (YYYY-MM-DD): ")
     medication = "Loxapac"
     hours = float(input("Enter intake time : "))
 
-    # Convert the float hours to hour format
-    # hours_format = float_to_hour(hours)
+    # Prompt the user to select a medication from the list
+    print("Available medications:")
+    for index, med in enumerate(medications, 1):
+        print(f"{index}. {med}")
+    
+    medication_choice = input("Select a medication (enter the corresponding number): ")
+    try:
+        medication_index = int(medication_choice)
+        if 1 <= medication_index <= len(medications):
+            medication = medications[medication_index - 1]
+        else:
+            print("Invalid medication selection. Please enter a valid number.")
+            continue
+    except ValueError:
+        print("Invalid input. Please enter a valid number.")
+        continue
 
     # Insert the data into the database
     cursor.execute("INSERT INTO intake VALUES (?, ?, ?)", (date, medication, hours))

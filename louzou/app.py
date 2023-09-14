@@ -1,6 +1,7 @@
-from flask import Flask, render_template, url_for 
-import sqlite3
 import pdb
+import sqlite3
+
+from flask import Flask, render_template, url_for
 
 app = Flask(__name__)
 
@@ -9,7 +10,7 @@ def calendar():
     conn = sqlite3.connect('data/loxapac.db')
     cursor = conn.cursor()
 
-    cursor.execute("SELECT date, medication, hours FROM intake")
+    cursor.execute("SELECT date, medication, hour FROM intake")
     hours_data = cursor.fetchall()
 
     conn.close()

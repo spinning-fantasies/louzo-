@@ -6,3 +6,4 @@ loxapac.db
 intake.csv
 data
 static/
+__pycache__/

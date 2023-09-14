@@ -7,3 +7,4 @@ intake.csv
 data
 static/
 __pycache__/
+*.egg-info/

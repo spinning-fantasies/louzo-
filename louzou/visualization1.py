@@ -14,4 +14,5 @@ plt.title('Medication Intake Over Time')
 plt.xlabel('date')
 plt.ylabel('intake')
 plt.grid(True)
+
 plt.savefig("static/intake1.png")

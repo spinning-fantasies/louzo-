@@ -26,7 +26,7 @@ def create_db() -> None:
 
 def db_conn() -> sqlite3.Connection:
     root = Path().absolute()
-    return sqlite3.connect(root / "data/loxapac.db")
+    return sqlite3.connect(root / "data/louzou.db")
 
 if __name__ == "__main__":
     create_db()

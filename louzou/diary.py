@@ -23,7 +23,8 @@ activities = ["Family",
               "Sleeping early",
               "Wake up early", 
               "Eat healthy", 
-              "Shopping"
+              "Shopping",
+              "Other"
             ]
 
 while True:
@@ -34,9 +35,8 @@ while True:
         print(f"{date_str} is not a valid date")
         sys.exit(1)
 
-
      # Prompt the user to select an activity from the list
-    print("Available moods:")
+    print("Available activities:")
     for index, activity in enumerate(activities, 1):
         print(f"{index}. {activity}")
     

@@ -7,10 +7,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def calendar():
-    conn = sqlite3.connect('data/loxapac.db')
+    conn = sqlite3.connect('data/louzou.db')
     cursor = conn.cursor()
 
-    cursor.execute("SELECT date, medication, hour FROM intake")
+    cursor.execute("SELECT date, medication, hours FROM intake")
     hours_data = cursor.fetchall()
 
     conn.close()

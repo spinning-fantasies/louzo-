@@ -1,7 +1,7 @@
 import sys
 from datetime import datetime
 
-from louzou.db import create_db, db_conn
+from db import create_db, db_conn
 
 
 class InvalidTimeError(Exception):

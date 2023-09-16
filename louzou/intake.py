@@ -61,7 +61,7 @@ while True:
 
     # Insert the data into the database
     cursor.execute(
-        "INSERT INTO intake(date, medication, hour) VALUES (?, ?, ?)",
+        "INSERT INTO intake(date, medication, hours) VALUES (?, ?, ?)",
         (date, medication, hours)
     )
     conn.commit()
